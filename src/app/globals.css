@@ -2,15 +2,48 @@
 @tailwind components;
 @tailwind utilities;
 
-@keyframes conveyor {
-  0% {
-    transform: translateX(0);
-  }
-  100% {
-    transform: translateX(-100%);
-  }
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap");
+
+:root {
+  --prussian-blue: hsla(196, 94%, 13%, 1);
+  --pacific-cyan: hsla(192, 59%, 51%, 1);
+  --blue-ncs: hsla(195, 100%, 38%, 1);
+  --prussian-blue-2: hsla(203, 49%, 18%, 1);
+  --cerulean: hsla(194, 95%, 29%, 1);
+  --white: hsla(0, 0%, 100%, 1);
+  --light-gray: hsla(210, 36%, 96%, 1);
 }
 
-.conveyor {
-  animation: conveyor 30s linear infinite;
+body {
+  background-color: var(--white);
+  color: var(--prussian-blue);
+  font-family: "Inter", sans-serif;
+}
+
+/* Generic utility styles */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+/* Button styles */
+button {
+  background-color: var(--pacific-cyan);
+  color: var(--white);
+  border-radius: 0.25rem;
+  transition: background-color 0.3s;
+}
+
+button:hover {
+  background-color: var(--blue-ncs);
+}
+
+/* Placeholder for reusable styles */
+.placeholder-bg {
+  background-color: var(--light-gray);
+}
+
+.text-center {
+  text-align: center;
 }

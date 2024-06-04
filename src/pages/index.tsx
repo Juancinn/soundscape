@@ -1,13 +1,12 @@
 import Layout from "@/app/layout";
-import SearchBar from "@/components/SearchBar/SearchBar";
-import AlbumGrid from "@/components/AlbumGrid/AlbumGrid";
+import Hero from "@/components/Hero/Hero";
 import HotReviews from "@/components/HotReviews/HotReviews";
 
 const Home = () => {
   return (
     <Layout>
-      <SearchBar />
-      <AlbumGrid />
+      <Hero />
+      <div className="mt-32"></div>
       <HotReviews />
     </Layout>
   );

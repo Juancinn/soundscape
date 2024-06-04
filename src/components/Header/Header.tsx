@@ -1,22 +1,75 @@
+"use client";
+
+import React, { useState } from "react";
+import Link from "next/link";
+import useStore from "@/contexts/Store";
+import styles from "./Header.module.css";
+import Image from "next/image";
+import useAuth from "@/hooks/useAuth";
+
 const Header = () => {
+  const { user, isAuthenticated, logout } = useStore();
+  const [dropdownVisible, setDropdownVisible] = useState(false);
+
+  useAuth();
+
+  const handleLogout = () => {
+    localStorage.removeItem("token");
+    logout();
+  };
+
   return (
-    <header className="flex justify-between items-center p-5 bg-white shadow-md">
-      <div className="text-2xl font-bold">SoundScape</div>
-      <nav className="space-x-4">
-        <a href="#" className="text-gray-700">
-          Artists
+    <header className={styles.header}>
+      <Link href="/" legacyBehavior>
+        <a className="flex items-center">
+          <Image
+            src="/logo.png"
+            alt="SoundScape Logo"
+            width={200}
+            height={75}
+          />
         </a>
-        <a href="#" className="text-gray-700">
-          Tracks
-        </a>
-        <a href="#" className="text-gray-700">
-          Listen to this
-        </a>
-        <button className="px-4 py-2 bg-black text-white rounded">
-          Sign In
-        </button>
+      </Link>
+      <nav className="space-x-6 flex text-lg">
+        {["Artists", "Tracks", "Listen to this"].map((item, index) => (
+          <NavItem
+            key={index}
+            href={`/${item.toLowerCase().replace(/ /g, "-")}`}
+          >
+            {item}
+          </NavItem>
+        ))}
+        {isAuthenticated ? (
+          <div className={styles.userMenu}>
+            <span onClick={() => setDropdownVisible(!dropdownVisible)}>
+              {user?.username} <span className="arrow-down">&#9660;</span>
+            </span>
+            {dropdownVisible && (
+              <div className={styles.dropdown}>
+                <Link href="/profile" legacyBehavior>
+                  <a className={styles.dropdownItem}>Profile</a>
+                </Link>
+                <button onClick={handleLogout} className={styles.dropdownItem}>
+                  Sign Out
+                </button>
+              </div>
+            )}
+          </div>
+        ) : (
+          <Link href="/login" legacyBehavior>
+            <a className={styles.button}>Log In</a>
+          </Link>
+        )}
       </nav>
     </header>
+  );
+};
+
+const NavItem = ({ href, children }) => {
+  return (
+    <Link href={href} legacyBehavior>
+      <a className={styles.navLink}>{children}</a>
+    </Link>
   );
 };
 

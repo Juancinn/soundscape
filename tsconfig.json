@@ -1,6 +1,7 @@
 {
   "compilerOptions": {
     "lib": ["dom", "dom.iterable", "esnext"],
+    "types": ["next-auth"],
     "allowJs": true,
     "skipLibCheck": true,
     "strict": true,
@@ -23,9 +24,17 @@
       "@/pages/*": ["src/pages/*"],
       "@/app/*": ["src/app/*"],
       "@/utils/*": ["src/utils/*"],
-      "@/public/*": ["public/*"]
+      "@/public/*": ["public/*"],
+      "@/contexts/*": ["src/contexts/*"],
+      "@/hooks/*": ["src/hooks/*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
+  "include": [
+    "next-env.d.ts",
+    "**/*.ts",
+    "**/*.tsx",
+    ".next/types/**/*.ts",
+    "backend/scripts/script.mts"
+  ],
   "exclude": ["node_modules"]
 }

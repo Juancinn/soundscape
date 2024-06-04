@@ -1,11 +1,13 @@
 const SearchBar = () => {
   return (
-    <div className="text-center">
-      <h1 className="text-4xl font-bold mb-4">Looking for something?</h1>
+    <div className="text-center mb-20">
+      <h1 className="text-5xl font-bold mb-10 text-black">
+        Looking for something?
+      </h1>
       <input
         type="text"
         placeholder="Search"
-        className="w-full p-3 border border-gray-300 rounded mb-10"
+        className="w-3/4 max-w-lg mx-auto p-4 text-lg border border-gray-300 rounded"
       />
     </div>
   );
