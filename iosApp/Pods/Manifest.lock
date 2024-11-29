@@ -1,0 +1,16 @@
+PODS:
+  - commonModule (1.0)
+
+DEPENDENCIES:
+  - commonModule (from `../commonModule`)
+
+EXTERNAL SOURCES:
+  commonModule:
+    :path: "../commonModule"
+
+SPEC CHECKSUMS:
+  commonModule: 685e0dded15af35c09569c5cd7bd3cc6ada5dc72
+
+PODFILE CHECKSUM: 432b30a002dffca0d212bde0bb6007e938caee46
+
+COCOAPODS: 1.16.2
