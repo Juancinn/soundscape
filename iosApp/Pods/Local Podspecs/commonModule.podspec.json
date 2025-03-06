@@ -1,13 +1,13 @@
 {
   "name": "commonModule",
   "version": "1.0",
-  "homepage": "Link to the Shared Module homepage",
+  "homepage": "N/A",
   "source": {
     "http": ""
   },
   "authors": "",
   "license": "",
-  "summary": "Some description for the Shared Module",
+  "summary": "Shared module for Soundscape",
   "vendored_frameworks": "build/cocoapods/framework/commonModule.framework",
   "libraries": "c++",
   "platforms": {

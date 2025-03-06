@@ -2,15 +2,26 @@ import SwiftUI
 import commonModule
 
 struct ContentView: View {
-	let greet = Greeting().greet()
+    @State private var responseText: String = "Testing..."
 
-	var body: some View {
-		Text(greet)
-	}
-}
-
-struct ContentView_Previews: PreviewProvider {
-	static var previews: some View {
-		ContentView()
-	}
+    var body: some View {
+        VStack {
+            Text(responseText)
+                .padding()
+                .onAppear {
+                    Task {
+                        do {
+                            let result = try await HttpClientTest().testHttpClient()
+                            DispatchQueue.main.async {
+                                responseText = result
+                            }
+                        } catch {
+                            DispatchQueue.main.async {
+                                responseText = "Error: \(error.localizedDescription)"
+                            }
+                        }
+                    }
+                }
+        }
+    }
 }
